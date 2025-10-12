@@ -2,11 +2,312 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Café Homepage (Stub)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blue Harbor Café</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #0e1726;
+        --muted: #5b6b7a;
+        --brand: #60a5fa; /* matches your button blue */
+        --card: #ffffff;
+        --bg: #f6f8fb;
+        --ring: #e6eef9;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      .container {
+        max-width: 960px;
+        width: 92%;
+        margin: 24px auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 0;
+      }
+      .logo {
+        font-weight: 600;
+        letter-spacing: 0.3px;
+      }
+      nav a {
+        margin-left: 14px;
+        text-decoration: none;
+        color: var(--muted);
+      }
+      nav a:hover {
+        color: var(--ink);
+      }
+      .hero {
+        background: #eaf3ff;
+        border: 1px solid var(--ring);
+        border-radius: 16px;
+        padding: 22px;
+        display: grid;
+        gap: 18px;
+      }
+      .hero h1 {
+        margin: 0 0 6px 0;
+      }
+      .hero p {
+        margin: 0;
+        color: var(--muted);
+      }
+      .hero img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+        border-radius: 12px;
+        border: 1px solid var(--ring);
+      }
+      .section {
+        margin-top: 28px;
+      }
+      .section h2 {
+        margin: 0 0 10px 0;
+      }
+      /* Menu cards */
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 700px) {
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--ring);
+        border-radius: 14px;
+        padding: 14px;
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+      .thumb {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+        object-fit: cover;
+        border: 1px solid var(--ring);
+      }
+      .item {
+        flex: 1;
+      }
+      .item h3 {
+        margin: 0 0 4px 0;
+        font-size: 16px;
+      }
+      .item p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .price {
+        white-space: nowrap;
+        font-weight: 600;
+      }
+      /* Hours */
+      .hours {
+        background: var(--card);
+        border: 1px solid var(--ring);
+        border-radius: 14px;
+        padding: 14px;
+      }
+      .hours ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .hours li {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-top: 1px solid var(--ring);
+      }
+      .hours li:first-child {
+        border-top: 0;
+      }
+      /* Contact */
+      .contact {
+        background: var(--card);
+        border: 1px solid var(--ring);
+        border-radius: 14px;
+        padding: 14px;
+      }
+      .row {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr;
+      }
+      @media (min-width: 700px) {
+        .row {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      label {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 4px;
+        color: var(--muted);
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid var(--ring);
+        border-radius: 10px;
+        background: #fff;
+      }
+      .btn {
+        display: inline-block;
+        background: var(--brand);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin-top: 10px;
+        transition: transform 0.08s ease, opacity 0.08s ease,
+          box-shadow 0.08s ease;
+        box-shadow: 0 2px 6px rgba(11, 61, 145, 0.25);
+      }
+      .btn:hover,
+      .btn:focus-visible {
+        transform: translateY(-2px);
+        opacity: 0.97;
+        outline: none;
+      }
+      footer {
+        color: var(--muted);
+        font-size: 14px;
+        text-align: center;
+        margin: 28px 0;
+      }
+    </style>
   </head>
   <body>
-    <h1>Café Homepage</h1>
-    <p>This is a placeholder page for your future café project.</p>
+    <div class="container">
+      <header>
+        <div class="logo">Blue Harbor Café</div>
+        <nav>
+          <a href="#menu">Menu</a>
+          <a href="#hours">Hours</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div>
+          <h1>Fresh coffee. Simple food. Good times.</h1>
+          <p>Locally roasted beans, quick bites, and friendly service.</p>
+        </div>
+        <img src="../../assets/harborcafe.jpg" alt="harbor cafe" />
+      </section>
+
+      <section class="section" id="menu">
+        <h2>Menu</h2>
+        <div class="grid">
+          <article class="card">
+            <img class="thumb" src="../../assets/latte.jpg" alt="Latte" />
+            <div class="item">
+              <h3>Latte</h3>
+              <p>Espresso with steamed milk.</p>
+            </div>
+            <div class="price">$4.25</div>
+          </article>
+
+          <article class="card">
+            <img
+              class="thumb"
+              src="../../assets/dripcoffee.jpg"
+              alt="Drip Coffee"
+            />
+            <div class="item">
+              <h3>Drip Coffee</h3>
+              <p>Daily house roast.</p>
+            </div>
+            <div class="price">$2.50</div>
+          </article>
+
+          <article class="card">
+            <img
+              class="thumb"
+              src="../../assets/blueberrymuffin.jpg"
+              alt="Blueberry Muffin"
+            />
+            <div class="item">
+              <h3>Blueberry Muffin</h3>
+              <p>Baked fresh every morning.</p>
+            </div>
+            <div class="price">$2.95</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="hours">
+        <h2>Hours</h2>
+        <div class="hours">
+          <ul>
+            <li><span>Sunday</span><span>7:00–2:00</span></li>
+            <li><span>Monday</span><span>6:00–3:00</span></li>
+            <li><span>Tuesday</span><span>6:00–3:00</span></li>
+            <li><span>Wednesday</span><span>6:00–3:00</span></li>
+            <li><span>Thursday</span><span>6:00–3:00</span></li>
+            <li><span>Friday</span><span>6:00–3:00</span></li>
+            <li><span>Saturday</span><span>7:00–2:00</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <h2>Contact</h2>
+        <div class="contact">
+          <div class="row">
+            <div>
+              <p>123 Harbor Ave, Lakeside, WI</p>
+              <p>(555) 123-4567</p>
+              <p>hello@blueharbor.example</p>
+            </div>
+            <form
+              onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.');"
+            >
+              <label for="name">Name</label>
+              <input id="name" required />
+              <label for="email">Email</label>
+              <input id="email" type="email" required />
+              <label for="msg">Message</label>
+              <textarea id="msg" rows="4" required></textarea>
+              <button class="btn" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer>© <span id="y"></span> Blue Harbor Café</footer>
+    </div>
+
+    <script>
+      // tiny year updater
+      document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
   </body>
 </html>
