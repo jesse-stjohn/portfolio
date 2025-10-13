@@ -1,3 +1,39 @@
+:root {
+  /* Modular scale */
+  --step--1: 0.875rem; /* small text */
+  --step-0: 1rem; /* base text */
+  --step-1: 1.25rem; /* h6-ish */
+  --step-2: 1.563rem; /* h5 */
+  --step-3: 1.953rem; /* h3/h4 */
+  --step-4: 2.441rem; /* h1 */
+
+  /* Rhythm */
+  --lh-tight: 1.1;
+  --lh-snug: 1.15;
+  --lh-relaxed: 1.6;
+
+  /* Font stack: system first, then Inter if you already load it */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol";
+
+  /* Spacing scale */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2rem;
+  --space-5: 3rem;
+}
+
+html {
+  font-size: 16px;
+  line-height: var(--lh-relaxed);
+}
+body {
+  font-family: var(--font-sans);
+  color: #111;
+}
+
 /* Reset + base */
 *,
 *::before,
@@ -110,4 +146,23 @@ body {
   transform: translateY(-2px);
   opacity: 0.97;
   outline: none;
+}
+
+/* Global spacing consistency */
+section {
+  padding: var(--space-4) var(--space-2);
+}
+
+.container {
+  max-width: 72ch;
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+}
+
+.project-card {
+  margin: var(--space-2) 0;
+  padding: var(--space-2);
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
