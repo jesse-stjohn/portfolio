@@ -1,74 +1,192 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jesse's Portfolio</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <main class="container">
-      <!-- Intro -->
-      <header class="intro">
-        <h1>Jesse St.John — Web Developer</h1>
-        <p>Junior Web Developer – HTML | CSS | JavaScript</p>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jesse's Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-      <!-- About -->
-      <section id="about">
-        <h2>About Me</h2>
-        <p>
-          Hi, I’m Jesse. I’m learning HTML, CSS, and JavaScript and I’m building
-          clean, simple, responsive webpages. I like small, fast projects and
-          clear results.
-        </p>
-      </section>
+<body>
+  <main class="container">
+    <!-- Intro -->
+    <header class="intro">
+      <h1>Jesse St.John — Web Developer</h1>
+      <p>Junior Web Developer – HTML | CSS | JavaScript</p>
+    </header>
 
-      <!-- Projects -->
-      <section id="projects">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-          <article class="project-card">
-            <img src="assets/todo.jpg" alt="To-Do List App preview" />
-            <h3>To-Do List App</h3>
-            <p>
-              Add, complete, and delete tasks. Built with HTML, CSS, and vanilla
-              JS.
-            </p>
-            <a class="btn" href="projects/todo/index.html" target="_blank"
-              >View Demo</a
-            >
-          </article>
+    <!-- About -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hi, I’m Jesse. I’m learning HTML, CSS, and JavaScript and I’m building
+        clean, simple, responsive webpages. I like small, fast projects and
+        clear results.
+      </p>
+    </section>
 
-          <article class="project-card">
-            <img src="assets/cafe.jpg" alt="Café Homepage preview" />
-            <h3>Café Homepage</h3>
-            <p>
-              Simple business site with Menu, Hours, and Contact. Fully
-              responsive.
-            </p>
-            <a class="btn" href="projects/cafe/index.html" target="_blank"
-              >View Demo</a
-            >
-          </article>
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <article class="project-card">
+          <img src="assets/todo.jpg" alt="To-Do List App preview" />
+          <h3>To-Do List App</h3>
+          <p>
+            Add, complete, and delete tasks. Built with HTML, CSS, and vanilla
+            JS.
+          </p>
+          <a class="btn" href="projects/todo/index.html" target="_blank">View Demo</a>
+        </article>
 
-          <article class="project-card">
-            <img src="assets/blog.jpg" alt="Personal Blog Page preview" />
-            <h3>Personal Blog Page</h3>
-            <p>
-              Clean blog layout with headings, cards, and readable typography.
-            </p>
-            <a class="btn" href="projects/blog/index.html" target="_blank"
-              >View Demo</a
-            >
-          </article>
+        <article class="project-card">
+          <img src="assets/cafe.jpg" alt="Café Homepage preview" />
+          <h3>Café Homepage</h3>
+          <p>
+            Simple business site with Menu, Hours, and Contact. Fully
+            responsive.
+          </p>
+          <a class="btn" href="projects/cafe/index.html" target="_blank">View Demo</a>
+        </article>
+
+        <article class="project-card">
+          <img src="assets/blog.jpg" alt="Personal Blog Page preview" />
+          <h3>Personal Blog Page</h3>
+          <p>
+            Clean blog layout with headings, cards, and readable typography.
+          </p>
+          <a class="btn" href="projects/blog/index.html" target="_blank">View Demo</a>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blue Harbor Café</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Shared site styles (LOAD LAST) -->
+  <link rel="stylesheet" href="../../assets/style.css?v=128" />
+</head>
+
+<body class="cafe">
+  <header>
+    <div class="container header-grid">
+      <a class="brand" href="../../index.html">Blue Harbor Café</a>
+
+      <nav class="top-links">
+        <a href="../cafe/index.html" aria-current="page">Café</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../todo/index.html">To-Do</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+
+      <div class="hero-text">
+        <div class="hero-top">
+          <h1>Fresh coffee. Simple food. Good times.</h1>
+          <nav class="section-nav">
+            <a href="#menu">Menu</a>
+            <a href="#hours">Hours</a>
+            <a href="#contact">Contact</a>
+          </nav>
         </div>
-      </section>
-    </main>
-  </body>
+
+        <p>Locally roasted beans, quick bites, and friendly service.</p>
+      </div>
+
+      <img src="../../assets/img/harborcafe.jpg" alt="Harbor Cafe" class="hero-img">
+    </section>
+
+    <section class="section" id="menu">
+      <h2>Menu</h2>
+      <div class="grid">
+        <article class="card">
+          <img class="thumb" src="../../assets/img/latte.jpg" alt="Latte" />
+          <div class="item">
+            <h3>Latte</h3>
+            <p>Espresso with steamed milk.</p>
+          </div>
+          <div class="price">$4.25</div>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="../../assets/img/dripcoffee.jpg" alt="Drip Coffee" />
+          <div class="item">
+            <h3>Drip Coffee</h3>
+            <p>Daily house roast.</p>
+          </div>
+          <div class="price">$2.50</div>
+        </article>
+
+        <article class="card">
+          <img class="thumb" src="../../assets/img/blueberrymuffin.jpg" alt="Blueberry Muffin" />
+          <div class="item">
+            <h3>Blueberry Muffin</h3>
+            <p>Baked fresh every morning.</p>
+          </div>
+          <div class="price">$2.95</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="hours">
+      <h2>Hours</h2>
+      <div class="hours">
+        <ul>
+          <li><span>Sunday</span><span>7:00–2:00</span></li>
+          <li><span>Monday</span><span>6:00–3:00</span></li>
+          <li><span>Tuesday</span><span>6:00–3:00</span></li>
+          <li><span>Wednesday</span><span>6:00–3:00</span></li>
+          <li><span>Thursday</span><span>6:00–3:00</span></li>
+          <li><span>Friday</span><span>6:00–3:00</span></li>
+          <li><span>Saturday</span><span>7:00–2:00</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div class="row">
+          <div>
+            <p>123 Harbor Ave, Lakeside, WI</p>
+            <p>hello@blueharbor.example</p>
+            <p>(555) 123-4567</p>
+          </div>
+          <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.');">
+            <label for="name">Name</label>
+            <input id="name" required />
+            <label for="email">Email</label>
+            <input id="email" type="email" required />
+            <label for="msg">Message</label>
+            <textarea id="msg" rows="4" required></textarea>
+            <button class="btn" type="submit">Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>© <span id="y"></span> Blue Harbor Café</footer>
+  </main>
+
+  <script>
+    // tiny year updater
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+
 </html>
