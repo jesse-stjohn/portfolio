@@ -1,0 +1,556 @@
+/* ================================
+   Design tokens
+   ================================ */
+:root {
+  /* Brand + neutrals for dark UI */
+  --brand: #1e6cff;
+  --brand-ink: #0b3ea8;
+  --bg: #0f1115;
+  --elev: #151922;
+  --ink: #e8edf6;
+  --ink-dim: #a9b4c8;
+  --line: #273047;
+
+  /* Type scale */
+  --fs-xs: 14px;
+  --fs-s: 16px;
+  --fs-m: 18px;
+  --fs-l: 22px;
+  --fs-xl: 28px;
+
+  /* Space + misc */
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-2: 10px;
+  --shadow-1: 0 6px 20px rgba(0, 0, 0, .25);
+}
+
+/* ================================
+   Base reset
+   ================================ */
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block
+}
+
+/* ================================
+   Global dark theme (Blog/To-Do)
+   ================================ */
+body {
+  color: var(--ink);
+  background: radial-gradient(1200px 800px at 80% -10%, #1b2233 0%, var(--bg) 55%) fixed;
+  font: 400 var(--fs-s)/1.55 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* Layout helpers */
+.container {
+  max-width: 980px;
+  margin: auto;
+  padding: var(--space-8) var(--space-4)
+}
+
+.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(6px);
+  padding: var(--space-8);
+}
+
+/* Utilities */
+.pad-lg {
+  padding: var(--space-8)
+}
+
+.page-title {
+  margin: 0 0 var(--space-4)
+}
+
+/* Links */
+a {
+  color: var(--brand);
+  text-decoration: none
+}
+
+/* ================================
+   Unified Header / Nav (CLEAN)
+   ================================ */
+
+/* 1) Theme variables with page overrides */
+:root {
+  --header-bg: #1b2233;
+  /* default (Blog/To-Do) */
+  --header-fg: #ffffff;
+  --page-bg: radial-gradient(1200px 800px at 80% -10%, #1b2233 0%, #0f1115 55%) fixed;
+  --page-fg: #e8edf6;
+
+  /* accents that play nice together */
+  --accent-1: #3b2a1f;
+  /* Café brown */
+  --accent-2: #2f3a4a;
+  /* To-Do slate */
+  --accent-3: #444444;
+  /* Blog charcoal */
+}
+
+/* Page themes */
+body.blog {
+  --header-bg: #2a2f3b;
+  --header-fg: #fff;
+  --page-bg: radial-gradient(1200px 800px at 80% -10%, #222939 0%, #0f1115 55%) fixed;
+  --page-fg: #e8edf6;
+}
+
+body.todo {
+  --header-bg: var(--accent-2);
+  --header-fg: #fff;
+  --page-bg: radial-gradient(1200px 800px at 80% -10%, #2b3546 0%, #0f1115 55%) fixed;
+  --page-fg: #e8edf6;
+}
+
+body.cafe {
+  --header-bg: var(--accent-1);
+  --header-fg: #fff;
+  --page-bg: #ffffff;
+  --page-fg: #111111;
+}
+
+/* Apply page bg/text once (don’t overwrite earlier base) */
+html,
+body {
+  background: var(--page-bg);
+  color: var(--page-fg);
+}
+
+/* 2) One header system that works with both old (.site-header/.nav) and new (.header-grid) markup */
+header,
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--header-bg);
+  color: var(--header-fg);
+  border-bottom: 1px solid rgba(255, 255, 255, .08);
+  backdrop-filter: saturate(115%) blur(6px);
+}
+
+/* layout for either structure */
+.header-grid,
+.site-header .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 12px var(--space-4);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.2vw, 1.6rem);
+  color: inherit;
+  text-decoration: none;
+}
+
+/* top-right links (Café / Blog / To-Do) */
+.top-links a,
+.nav .nav-links a {
+  color: rgba(255, 255, 255, .9);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.top-links a:hover,
+.nav .nav-links a:hover {
+  text-decoration: underline;
+  background: rgba(255, 255, 255, .08);
+}
+
+.nav .nav-links a[aria-current="page"],
+.top-links a[aria-current="page"] {
+  background: rgba(255, 255, 255, .12);
+  border: 1px solid rgba(255, 255, 255, .18);
+}
+
+/* 3) Café light look (scoped tweaks that ONLY affect Café) */
+body.cafe header,
+body.cafe .site-header {
+  backdrop-filter: none;
+  border-bottom: 1px solid #e7eaf3;
+}
+
+body.cafe .brand {
+  color: #f9f6f2;
+  /* readable on brown */
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-family: Georgia, serif;
+}
+
+body.cafe .top-links a,
+body.cafe .nav .nav-links a {
+  color: #f2e9e1;
+}
+
+body.cafe .top-links a:hover,
+body.cafe .nav .nav-links a:hover {
+  background: rgba(255, 255, 255, .10);
+  color: #fff;
+}
+
+/* 4) Make sure containers stay centered (single source of truth) */
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 5) Kill conflicting old rules */
+.site-header {
+  /* remove old gray */
+  background: var(--header-bg) !important;
+  border-bottom-color: currentColor;
+}
+
+.nav .brand {
+  color: inherit;
+}
+
+/* 6) Optional: section nav bars (if you use them below header) */
+.section-nav,
+.footer-nav {
+  display: flex;
+  gap: .75rem;
+  padding: .6rem 0;
+}
+
+/* cleaner, slightly smaller Café buttons */
+.section-nav a,
+.footer-nav a {
+  text-decoration: none;
+  padding: .25rem .5rem;
+  /* smaller buttons */
+  border-radius: .35rem;
+  font-size: 0.9rem;
+  /* smaller text */
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: var(--header-fg);
+}
+
+body.cafe .section-nav a,
+body.cafe .footer-nav a {
+  background: #f6f3ef;
+  border: 1px solid #e7dfd7;
+  color: #3b2a1f;
+}
+
+.section-nav a:hover,
+.footer-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Café menu layout */
+.cafe .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 700px) {
+  .cafe .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Café menu image sizing */
+.cafe .thumb {
+  width: 100%;
+  height: 160px;
+  /* make them all equal height */
+  object-fit: cover;
+  /* crop to fill, not stretch */
+  border-radius: 10px;
+  display: block;
+}
+
+/* Café contact form vertical layout */
+body.cafe .contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 0;
+}
+
+/* Café footer tone */
+body.cafe footer {
+  background: #f8f6f3;
+  color: #6b4a2b;
+}
+
+body.todo .btn.primary {
+  background: #4a6fa8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+}
+
+body.todo .btn.primary:hover {
+  filter: brightness(1.1);
+}
+
+/* layout: headline left, nav right, paragraph below */
+body.cafe .hero-text {
+  display: flex;
+  flex-direction: column;
+  /* stack rows vertically */
+  align-items: flex-start;
+}
+
+/* make first row (headline + nav) share a line */
+body.cafe .hero-text .hero-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  /* span full width */
+}
+
+/* tweak link spacing */
+body.cafe .hero-text .hero-top .section-nav {
+  display: flex;
+  gap: .75rem;
+  margin: 0;
+}
+
+
+
+/* Special hover just for the Blue Harbor Café brand link */
+body.cafe .brand:hover {
+  color: #4b9aff;
+  /* blue color */
+  transform: scale(1.1);
+  /* small size bump */
+  text-decoration: none;
+  /* no underline */
+  transition: all 0.15s ease-in-out;
+}
+
+/* subtle animations on hover/focus */
+a,
+button {
+  transition: color .15s ease, background-color .15s ease, transform .15s ease, border-color .15s ease;
+}
+
+/* visible, consistent focus ring */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #58caff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* allow headline + nav to wrap on narrow screens */
+body.cafe .hero-text .hero-top {
+  flex-wrap: wrap;
+  row-gap: .4rem;
+}
+
+@media (max-width: 560px) {
+  body.cafe .hero-text .hero-top {
+    justify-content: flex-start;
+    gap: .5rem 1rem;
+    /* nicer wrap spacing */
+  }
+
+  body.cafe .hero-text .hero-top .section-nav {
+    margin-left: 0;
+  }
+}
+
+/* slightly softer borders on light cards */
+body.cafe .card {
+  border-color: #ece6df;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .06);
+}
+
+/* café header already has strong color; ease the blur */
+body.cafe header,
+body.cafe .site-header {
+  backdrop-filter: none;
+}
+
+/* consistent headings spacing */
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* Café hero image rounding */
+body.cafe .hero-img {
+  display: block;
+  width: 100%;
+  max-width: 1200px;
+  height: 420px;
+  object-fit: cover;
+  margin: 0 auto;
+  border-radius: 12px;
+  /* rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+  /* optional soft depth */
+}
+
+body.cafe footer {
+  background: #f8f6f3;
+  color: #6b4a2b;
+  margin-top: 2rem;
+  padding: 1.5rem 0;
+}
+
+body.cafe .contact button {
+  background: #60a5fa;
+  color: #111;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  /* make it taller and wider */
+  font-size: 1rem;
+  /* slightly larger text */
+  font-weight: 600;
+  /* bolder label */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+body.cafe .contact button:hover {
+  background: #4b91f0;
+  transform: scale(1.05);
+  /* small pop on hover */
+}
+
+/* Improved café hours layout */
+body.cafe .hours {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: #fdfaf7;
+  border: 1px solid #e6ded3;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+body.cafe .hours ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body.cafe .hours li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #eee3d9;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #3b2a1f;
+}
+
+body.cafe .hours li:last-child {
+  border-bottom: none;
+}
+
+body.cafe #hours h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #3b2a1f;
+  letter-spacing: 0.5px;
+}
+
+/* Improved Café contact section */
+body.cafe .contact {
+  max-width: 500px;
+  margin: 2rem auto;
+  background: #fdfaf7;
+  border: 1px solid #e6ded3;
+  border-radius: 10px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+body.cafe .contact p {
+  margin: 0.5rem 0;
+  color: #3b2a1f;
+  font-weight: 500;
+}
+
+body.cafe .contact form {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.cafe .contact input,
+body.cafe .contact textarea {
+  width: 100%;
+  max-width: 360px;
+  margin-bottom: 0.8rem;
+  text-align: left;
+}
+
+body.cafe .contact button {
+  margin-top: 0.5rem;
+}
+
+/* Force footer to span full width */
+body.cafe footer {
+  background: #f8f6f3;
+  color: #6b4a2b;
+  text-align: center;
+  padding: 1.5rem 0;
+  font-size: 0.95rem;
+  border-top: 1px solid #e7dfd7;
+  width: 100vw;
+  /* full viewport width */
+  margin-left: calc(-50vw + 50%);
+  /* cancel container centering */
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05);
+}
+
+body.cafe #contact h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #3b2a1f;
+  letter-spacing: 0.5px;
+}

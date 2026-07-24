@@ -1,229 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>To-Do App</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #f4f4f4;
-        --card: #fff;
-        --ink: #60a5fa;
-      }
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        font-family: Roboto, system-ui, -apple-system, "Segoe UI", sans-serif;
-        background: var(--bg);
-      }
-      .wrap {
-        max-width: 600px;
-        width: 92%;
-        margin: 32px auto;
-      }
-      h1 {
-        margin: 0 0 16px;
-        color: #111;
-        text-align: center;
-      }
-      .card {
-        background: var(--card);
-        border: 1px solid #e7eaf3;
-        border-radius: 12px;
-        padding: 16px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      }
-      form {
-        display: flex;
-        gap: 8px;
-      }
-      input[type="text"] {
-        flex: 1;
-        padding: 12px 14px;
-        border: 1px solid #cfd7ea;
-        border-radius: 10px;
-      }
-      button {
-        background: var(--ink);
-        color: #111;
-        border: 0;
-        border-radius: 10px;
-        padding: 12px 14px;
-        cursor: pointer;
-      }
-      button:hover,
-      button:focus-visible {
-        filter: brightness(0.95);
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        margin: 16px 0 0;
-      }
-      li {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        padding: 10px 12px;
-        border: 1px solid #e7eaf3;
-        border-radius: 10px;
-        margin-bottom: 10px;
-        background: #f9fbff;
-      }
-      li.completed .label {
-        text-decoration: line-through;
-        opacity: 0.6;
-      }
-      .label {
-        flex: 1;
-        word-break: break-word;
-      }
-      .tiny {
-        font-size: 12px;
-        color: #555;
-        margin-top: 10px;
-        text-align: center;
-      }
-      .icon {
-        background: #fff;
-        border: 1px solid #dbe3f5;
-        padding: 6px 10px;
-        border-radius: 8px;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <h1>To-Do List</h1>
-      <div class="card">
-        <form id="new-task-form" autocomplete="off">
-          <input
-            id="task-input"
-            type="text"
-            placeholder="Add a task..."
-            aria-label="Task"
-          />
-          <button type="submit">Add</button>
-        </form>
 
-        <ul id="list"></ul>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To-Do • Jesse</title>
+  <link rel="stylesheet" href="../../assets/style.css?v=125" />
+</head>
 
-        <div class="tiny">
-          Click a task to toggle complete.
-          <button
-            class="icon"
-            id="clear-completed"
-            type="button"
-            title="Remove completed tasks"
-          >
-            Clear completed
-          </button>
-          <button
-            class="icon"
-            id="reset-all"
-            type="button"
-            title="Delete everything"
-          >
-            Reset all
-          </button>
+<body class="todo">
+  <header class="site-header">
+    <nav class="nav">
+      <a href="../../index.html" class="brand">Jesse</a>
+      <div class="nav-links">
+        <a href="../cafe/index.html">Café</a>
+        <a href="../blog/index.html">Blog</a>
+        <a href="../todo/index.html" aria-current="page">To-Do</a>
+
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="card pad-lg">
+      <h1 class="page-title">To-Do</h1>
+
+      <form class="todo-new">
+        <input class="input" placeholder="Add a task and press Enter" />
+        <button class="btn primary" type="submit">Add</button>
+      </form>
+
+      <div class="todo-list">
+        <div class="todo-item">
+          <input type="checkbox" />
+          <div class="todo-title">Match Blog header and spacing</div>
+          <div class="todo-actions">
+            <button class="btn">Edit</button>
+            <button class="btn">Delete</button>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
+  </main>
+  <script>
+    (function () {
+      const form = document.querySelector('.todo-new');
+      const input = document.querySelector('.todo-new .input');
+      const list = document.querySelector('.todo-list');
 
-    <script>
-      const KEY = "jesse_todos_v1";
-      const $list = document.getElementById("list");
-      const $form = document.getElementById("new-task-form");
-      const $input = document.getElementById("task-input");
-      const $clearCompleted = document.getElementById("clear-completed");
-      const $resetAll = document.getElementById("reset-all");
+      if (!form || !input || !list) return; // you moved stuff again, didn’t you?
 
-      let todos = load();
-
-      function load() {
-        try {
-          return JSON.parse(localStorage.getItem(KEY)) ?? [];
-        } catch {
-          return [];
-        }
-      }
-      function save() {
-        localStorage.setItem(KEY, JSON.stringify(todos));
-      }
-      function render() {
-        $list.innerHTML = "";
-        todos.forEach((t, i) => {
-          const li = document.createElement("li");
-          li.className = t.done ? "completed" : "";
-          li.dataset.index = i;
-
-          const cb = document.createElement("input");
-          cb.type = "checkbox";
-          cb.checked = t.done;
-          cb.addEventListener("change", () => toggle(i));
-
-          const span = document.createElement("span");
-          span.className = "label";
-          span.textContent = t.text;
-          span.addEventListener("click", () => toggle(i));
-
-          const del = document.createElement("button");
-          del.className = "icon";
-          del.type = "button";
-          del.textContent = "Delete";
-          del.addEventListener("click", () => remove(i));
-
-          li.append(cb, span, del);
-          $list.append(li);
-        });
-      }
-      function add(text) {
-        const trimmed = text.trim();
-        if (!trimmed) return;
-        todos.unshift({ text: trimmed, done: false, ts: Date.now() });
-        save();
-        render();
-      }
-      function toggle(i) {
-        todos[i].done = !todos[i].done;
-        save();
-        render();
-      }
-      function remove(i) {
-        todos.splice(i, 1);
-        save();
-        render();
-      }
-
-      $form.addEventListener("submit", (e) => {
+      form.addEventListener('submit', function (e) {
         e.preventDefault();
-        add($input.value);
-        $input.value = "";
-        $input.focus();
-      });
+        const text = input.value.trim();
+        if (!text) return;
 
-      $clearCompleted.addEventListener("click", () => {
-        todos = todos.filter((t) => !t.done);
-        save();
-        render();
-      });
+        // build a row
+        const item = document.createElement('div');
+        item.className = 'todo-item';
+        item.innerHTML = `
+        <input type="checkbox" />
+        <div class="todo-title"></div>
+        <div class="todo-actions">
+          <button class="btn edit" type="button">Edit</button>
+          <button class="btn delete" type="button">Delete</button>
+        </div>
+      `;
+        item.querySelector('.todo-title').textContent = text;
+        list.prepend(item);          // add to top
+        input.value = '';            // clear box
+        input.focus();               // keep you moving
 
-      $resetAll.addEventListener("click", () => {
-        if (confirm("Delete all tasks?")) {
-          todos = [];
-          save();
-          render();
-        }
+        // wire up buttons
+        item.querySelector('.delete').onclick = () => item.remove();
+        item.querySelector('.edit').onclick = () => {
+          const current = item.querySelector('.todo-title').textContent;
+          const next = prompt('Edit task:', current);
+          if (next !== null) item.querySelector('.todo-title').textContent = next.trim() || current;
+        };
       });
+    })();
+  </script>
+</body>
 
-      render();
-    </script>
-  </body>
 </html>
