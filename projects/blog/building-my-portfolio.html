@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Building My Portfolio • Jesse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../../assets/style.css" />
+</head>
+
+<body class="blog">
+    <header class="site-header">
+        <nav class="nav">
+            <a href="../../index.html" class="brand">Jesse</a>
+            <div class="nav-links">
+                <a href="../cafe/index.html">Café</a>
+                <a href="../blog/index.html" aria-current="page">Blog</a>
+                <a href="../todo/index.html">To-Do</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <article class="card pad-lg">
+
+            <a class="back-link" href="index.html">← Back to Development Journal</a>
+
+            <h1>Building My Portfolio</h1>
+
+            <p class="meta">
+                Nov 20, 2025 • 4 min read
+            </p>
+
+            <img src="../../assets/img/building-portfolio-featured.png" alt="Building Portfolio banner"
+                class="featured-image" />
+
+            <div class="post-content">
+
+                <p>
+                    Welcome to my development journal. This blog is where I'll document my
+                    progress as I learn HTML, CSS, and JavaScript one step at a time.
+                </p>
+
+                <p>
+                    My goal is to build real websites, improve my design skills, and create
+                    projects that I'm proud to share. Along the way I'll record what I learn,
+                    the problems I solve, and the ideas I want to remember.
+                </p>
+
+                <p>
+                    Every post represents another step forward. Looking back through these
+                    entries will let me see how much I've grown as a web developer.
+                </p>
+                <p>One reusable CSS class in my portfolio looks like this:</p>
+
+                <pre><code>.card {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0));
+  border: 1px solid var(--line);
+  border-radius: var(--radius-2);
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(6px);
+  padding: var(--space-8);
+}</code></pre>
+                <p>The <code>.card</code> class gives different sections the same reusable design.</p>
+            </div>
+            <nav class="post-nav">
+                <a href="learning-html.html" class="prev-post">
+                    ← Previous: Learning HTML
+                </a>
+            </nav>
+        </article>
+    </main>
+</body>
+
+</html>

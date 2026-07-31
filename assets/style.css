@@ -2,7 +2,7 @@
    Design tokens
    ================================ */
 :root {
-  /* Brand + neutrals for dark UI */
+  /* Site color palette */
   --brand: #1e6cff;
   --brand-ink: #0b3ea8;
   --bg: #0f1115;
@@ -30,13 +30,13 @@
    Base reset
    ================================ */
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
 html,
 body {
   margin: 0;
-  padding: 0
+  padding: 0;
 }
 
 img {
@@ -46,7 +46,7 @@ img {
 }
 
 /* ================================
-   Global dark theme (Blog/To-Do)
+   Base page styling
    ================================ */
 body {
   color: var(--ink);
@@ -58,7 +58,7 @@ body {
 .container {
   max-width: 980px;
   margin: auto;
-  padding: var(--space-8) var(--space-4)
+  padding: var(--space-8) var(--space-4);
 }
 
 .card {
@@ -72,11 +72,11 @@ body {
 
 /* Utilities */
 .pad-lg {
-  padding: var(--space-8)
+  padding: var(--space-8);
 }
 
 .page-title {
-  margin: 0 0 var(--space-4)
+  margin: 0 0 var(--space-4);
 }
 
 /* Links */
@@ -95,7 +95,7 @@ a {
   /* default (Blog/To-Do) */
   --header-fg: #ffffff;
   --page-bg: radial-gradient(1200px 800px at 80% -10%, #1b2233 0%, #0f1115 55%) fixed;
-  --page-fg: #e8edf6;
+  --page-fg: #f4ede6;
 
   /* accents that play nice together */
   --accent-1: #3b2a1f;
@@ -108,10 +108,10 @@ a {
 
 /* Page themes */
 body.blog {
-  --header-bg: #2a2f3b;
+  --header-bg: #4a3a31;
   --header-fg: #fff;
-  --page-bg: radial-gradient(1200px 800px at 80% -10%, #222939 0%, #0f1115 55%) fixed;
-  --page-fg: #e8edf6;
+  --page-bg: radial-gradient(1200px 800px at 80% -10%, #3a3029 0%, #1d1815 55%) fixed;
+  --page-fg: #f2ebe2;
 }
 
 body.todo {
@@ -553,4 +553,200 @@ body.cafe #contact h2 {
   margin-bottom: 1rem;
   color: #3b2a1f;
   letter-spacing: 0.5px;
+}
+
+.journal-banner {
+  background-image: url("img/journal-banner.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 2rem;
+  border: 1px solid #6a5647;
+  border-radius: 14px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease;
+  text-align: center;
+}
+
+.journal-banner .page-title {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.journal-banner:hover {
+  transform: translateY(-1px);
+}
+
+.lead {
+  color: #c9a46a;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  transform: translateY(18px);
+}
+
+.journal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.post {
+  margin-top: 1.5rem;
+  border: 1px solid #4b3d34;
+  border-radius: 12px;
+  background-color: #2a231f;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.post:hover {
+  transform: translateY(-3px);
+  border-color: #c9a46a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.post-link {
+  display: block;
+  padding: 1.25rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background-color: #2a3140;
+  font-size: 0.85rem;
+}
+
+.meta {
+  color: #bba997;
+  font-size: 0.9rem;
+}
+
+.excerpt {
+  line-height: 1.7;
+}
+
+.title {
+  margin-bottom: 0.35rem;
+}
+
+.title a {
+  color: #c9a46a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.title a:hover {
+  color: #e0bd87;
+  text-decoration: underline;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: #c9a46a;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #e0bd87;
+  text-decoration: underline;
+}
+
+.card h1 {
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  max-width: 70ch;
+  line-height: 1.8;
+}
+
+.featured-image {
+  width: 80%;
+  max-width: 800px;
+  max-height: 300px;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  margin: 2.5rem auto;
+  border-radius: 12px;
+}
+
+.post-content {
+  max-width: 70ch;
+  margin: 2rem auto 0;
+  line-height: 1.9;
+  font-size: 1.08rem;
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-content h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 1rem;
+}
+
+.post-content ul {
+  margin: 1.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.post-content li {
+  margin-bottom: 0.75rem;
+}
+
+.post-nav {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-nav a {
+  color: #6b4f3a;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.post-nav a:hover {
+  text-decoration: underline;
+}
+
+pre {
+  background: #2a231f;
+  color: #f4f1ea;
+  padding: 1rem;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: Consolas, Monaco, monospace;
+}
+
+pre {
+  background-color: #2b2520;
+  padding: 18px;
+  border-left: 4px solid #c89b5b;
+  overflow-x: auto;
+}
+
+p code {
+  background-color: #2b2520;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #c89b5b;
 }

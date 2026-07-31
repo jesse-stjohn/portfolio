@@ -4,7 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blog • Jesse</title>
+  <title>Development Journal • Jesse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../../assets/style.css" />
 </head>
 
@@ -21,16 +25,52 @@
   </header>
 
   <main class="container">
-    <section class="card pad-lg">
-      <h1 class="page-title">Blog</h1>
+    <article class="card pad-lg">
+      <div class="journal-banner">
+        <div class="journal-content">
+          <h1 class="page-title">Development Journal</h1>
+
+          <p class="lead">
+            Thoughts, progress, and lessons learned as I continue my web development journey.
+          </p>
+        </div>
+      </div>
 
       <article class="post">
-        <h2 class="title"><a href="post-1.html">First Post</a></h2>
-        <div class="meta">Oct 18, 2025 • 1 min read</div>
-        <p class="excerpt">Content goes here. Keep it tight and readable.</p>
-        <div class="tags"><span class="tag">General</span></div>
+        <a class="post-link" href="first-post.html">
+          <h2 class="title">First Post</h2>
+          <div class="meta">Oct 18, 2025 • 1 min read</div>
+          <p class="excerpt">
+            Welcome to my development journal. This is where I'll document my
+            progress as I learn HTML, CSS, and JavaScript one step at a time...
+          </p>
+          <div class="tags"><span class="tag">Journal</span></div>
+        </a>
       </article>
-    </section>
+
+      <article class="post">
+        <a class="post-link" href="learning-html.html">
+          <h2 class="title">Learning HTML</h2>
+          <div class="meta">Nov 5, 2025 • 3 min read</div>
+          <p class="excerpt">
+            Discover how HTML became my foundation for web development and the key concepts I learned while building my
+            first webpages.
+          </p>
+          <div class="tags"><span class="tag">HTML</span></div>
+        </a>
+      </article>
+
+      <article class="post">
+        <a class="post-link" href="building-my-portfolio.html">
+          <h2 class="title">Building My Portfolio</h2>
+          <div class="meta">Nov 20, 2025 • 4 min read</div>
+          <p class="excerpt">
+            Follow my journey as I build a professional portfolio website and showcase the projects, skills, and lessons
+            that mark my progress as a web developer.
+          </p>
+          <div class="tags"><span class="tag">Portfolio</span></div>
+        </a>
+      </article>
   </main>
 </body>
 
