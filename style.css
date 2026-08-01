@@ -1,11 +1,17 @@
 :root {
   /* Modular scale */
-  --step--1: 0.875rem; /* small text */
-  --step-0: 1rem; /* base text */
-  --step-1: 1.25rem; /* h6-ish */
-  --step-2: 1.563rem; /* h5 */
-  --step-3: 1.953rem; /* h3/h4 */
-  --step-4: 2.441rem; /* h1 */
+  --step--1: 0.875rem;
+  /* small text */
+  --step-0: 1rem;
+  /* base text */
+  --step-1: 1.25rem;
+  /* h6-ish */
+  --step-2: 1.563rem;
+  /* h5 */
+  --step-3: 1.953rem;
+  /* h3/h4 */
+  --step-4: 2.441rem;
+  /* h1 */
 
   /* Rhythm */
   --lh-tight: 1.1;
@@ -29,6 +35,7 @@ html {
   font-size: 16px;
   line-height: var(--lh-relaxed);
 }
+
 body {
   font-family: var(--font-sans);
   color: #111;
@@ -90,7 +97,7 @@ body {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 900px) {
   .projects-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -165,4 +172,49 @@ section {
   border-radius: 12px;
   border: 1px solid #e6e6e6;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.portfolio .container {
+  max-width: 900px;
+}
+
+.portfolio {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: #f3f1ed;
+}
+
+.portfolio #projects {
+  padding-top: 0;
+}
+
+.portfolio #projects h2 {
+  margin-top: 0;
+}
+
+.portfolio #about h2 {
+  margin-top: 0;
+}
+
+.portfolio #about p {
+  margin-bottom: 0;
+}
+
+.portfolio #about {
+  background-color: #fffdf9;
+  border-radius: 16px;
+  border: 1px solid #e2ddd5;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+}
+
+.portfolio .project-card {
+  background-color: #fffdf9;
+  border-color: #e2ddd5;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.portfolio .btn {
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 0.8rem;
+  text-transform: none;
 }

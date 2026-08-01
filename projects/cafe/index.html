@@ -314,7 +314,7 @@
             <p>hello@blueharbor.example</p>
             <p>123 Harbor Ave, Lakeside, WI</p>
           </div>
-          <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.');">
+          <form onsubmit="event.preventDefault(); alert('Thanks! We\'ll be in touch.'); event.target.reset();">
             <label for="name">Name</label>
             <input id="name" required />
             <label for="email">Email</label>
