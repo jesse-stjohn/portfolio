@@ -23,23 +23,17 @@
 
   <main class="container">
     <section class="card pad-lg">
-      <h1 class="page-title">To-Do</h1>
+      <h1 class="page-title">
+        <span class="title-check" aria-hidden="true">✓</span>
+        My Tasks
+      </h1>
 
       <form class="todo-new">
-        <input class="input" placeholder="Add a task and press Enter" />
+        <input class="input" aria-label="New task" placeholder="Add a task and press Enter" />
         <button class="btn primary" type="submit">Add</button>
       </form>
 
-      <div class="todo-list">
-        <div class="todo-item">
-          <input type="checkbox" />
-          <div class="todo-title">Match Blog header and spacing</div>
-          <div class="todo-actions">
-            <button class="btn">Edit</button>
-            <button class="btn">Delete</button>
-          </div>
-        </div>
-      </div>
+      <div class="todo-list"></div>
     </section>
   </main>
   <script>
@@ -47,8 +41,24 @@
       const form = document.querySelector('.todo-new');
       const input = document.querySelector('.todo-new .input');
       const list = document.querySelector('.todo-list');
+      const storageKey = 'jesseTodoTasks';
 
-      if (!form || !input || !list) return; // you moved stuff again, didn’t you?
+      if (!form || !input || !list) return;
+      function saveTasks() {
+        const tasks = [];
+
+        list.querySelectorAll('.todo-item').forEach(function (item) {
+          const title = item.querySelector('.todo-title');
+          const checkbox = item.querySelector('input[type="checkbox"]');
+
+          tasks.push({
+            text: title.textContent,
+            completed: checkbox.checked
+          });
+        });
+
+        localStorage.setItem(storageKey, JSON.stringify(tasks));
+      }
 
       form.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -59,7 +69,8 @@
         const item = document.createElement('div');
         item.className = 'todo-item';
         item.innerHTML = `
-        <input type="checkbox" />
+        
+        <input type="checkbox" aria-label="Mark task complete" />
         <div class="todo-title"></div>
         <div class="todo-actions">
           <button class="btn edit" type="button">Edit</button>
@@ -69,16 +80,49 @@
         item.querySelector('.todo-title').textContent = text;
         list.prepend(item);          // add to top
         input.value = '';            // clear box
-        input.focus();               // keep you moving
+        input.focus();               // return cursor to input
+        saveTasks();
 
         // wire up buttons
-        item.querySelector('.delete').onclick = () => item.remove();
+        item.querySelector('input[type="checkbox"]').onchange = saveTasks;
+
+        item.querySelector('.delete').onclick = () => {
+          item.remove();
+          saveTasks();
+        };
         item.querySelector('.edit').onclick = () => {
-          const current = item.querySelector('.todo-title').textContent;
-          const next = prompt('Edit task:', current);
-          if (next !== null) item.querySelector('.todo-title').textContent = next.trim() || current;
+          const title = item.querySelector('.todo-title');
+          const original = title.textContent;
+
+          title.contentEditable = 'true';
+          title.focus();
+          title.onkeydown = (event) => {
+            if (event.key === 'Enter') {
+              event.preventDefault();
+              title.blur();
+            }
+          };
+          title.onblur = () => {
+            title.contentEditable = 'false';
+            title.textContent = title.textContent.trim() || original;
+            saveTasks();
+          };
         };
       });
+      const savedTasks = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+      savedTasks.slice().reverse().forEach(function (task) {
+        const taskText = typeof task === 'string' ? task : task.text;
+        const isCompleted = typeof task === 'object' && task.completed;
+
+        input.value = taskText;
+        form.requestSubmit();
+
+        const addedItem = list.firstElementChild;
+        addedItem.querySelector('input[type="checkbox"]').checked = isCompleted;
+      });
+
+      saveTasks();
     })();
   </script>
 </body>
