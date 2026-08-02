@@ -1,22 +1,26 @@
 # Jesse's Portfolio
 
-Welcome to my web development portfolio.
+A collection of responsive websites and web projects built with HTML, CSS, and JavaScript.
 
-This repository contains projects I have built while learning modern web development. My goal is to build clean, responsive websites and continue expanding my skills in HTML, CSS, JavaScript, Git, and GitHub.
+## Live Portfolio
 
-## Current Projects
+[View my portfolio](https://jesse-stjohn.github.io/portfolio/)
 
-- ☕ Blue Harbor Café
-- 📝 Personal Blog (in progress)
-- ✅ To-Do List App (in progress)
+## Projects
+
+- **Café Website** — A responsive business website with a menu, hours, contact information, and a working contact form.
+- **Development Blog** — A responsive blog with three articles, post navigation, images, and styled code examples.
+- **Task Manager** — A task app that lets users add, edit, complete, and delete tasks while saving them in the browser.
 
 ## Technologies
 
 - HTML5
 - CSS3
+- JavaScript
 - Git
 - GitHub
+- GitHub Pages
 
 ## About
 
-This portfolio documents my progress as I learn web development through hands-on projects and continuous improvement.
+I enjoy turning ideas into organized, easy-to-use websites. I focus on thoughtful layouts, dependable features, and responsive designs that work well on phones and computers.
